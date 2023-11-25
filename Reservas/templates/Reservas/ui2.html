@@ -1,0 +1,28 @@
+{% extends "Reservas/base.html" %}
+{% load static %}
+
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{% block content %}
+<h1 >Asignar Examinador a Horario</h1>
+<div class="">
+    <form action="" method="POST" class="form-group">
+        
+
+     
+        {% csrf_token %}
+        {% bootstrap_form form field_cols='col-sm-6' %} 
+        <hr>  
+        <div class="d-grid gap-2 col-6 mx-auto ">
+        <button type="submit" class="m-4 btn btn-success btn btn-secondary btn-lg">Agregar </button>
+        </div>  
+    </form>
+</div>
+        <!---
+       {{form}}-->
+    
+   
+
+{% endblock %} 
