@@ -1,0 +1,15 @@
+{% extends "Reservas/base.html" %}
+{% load static %}
+
+{% block content %}
+<h1>ver detalles  </h1>
+<div class="container mt-5">
+    <div class="card informacion">
+        <div class="card-body contact-form">
+            <h5 class="m-3 formulario">Evaluador: {{ e.Examinador }}</h5>
+            <h5 class="m-3 formulario2">Más información: {{ e.Horario }}</h5>
+            
+        </div>
+    </div>
+</div>
+{% endblock %}

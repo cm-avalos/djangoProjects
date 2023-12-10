@@ -21,11 +21,14 @@
       </div>
       <div class="menu">
         <a href="{% url 'Home' %}" class="d-block text-light p-3"><ion-icon name="apps-outline" class="me-2 lead"></ion-icon>Inicio</a>
+        {% if request.user.is_staff or request.user.is_superuser %}
         <a href="{% url 'Ui1' %}" class="d-block text-light p-3"><ion-icon name="person-add-outline" class="me-2 lead"></ion-icon>Agendar Atencion</a>
-        <a href="{% url 'Ui2' %}" class="d-block text-light p-3"><ion-icon name="bar-chart-outline" class="me-2 lead"></ion-icon>horarios</a>
+        <a href="{% url 'Ui2' %}" class="d-block text-light p-3"><ion-icon name="bar-chart-outline" class="me-2 lead"></ion-icon>Asociar</a>
         <a href="{% url 'Ui3' %}" class="d-block text-light p-3"><ion-icon name="accessibility-outline" class="me-2 lead"></ion-icon>Evaluaciones</a>
         <a href="{% url 'Ui4' %}" class="d-block text-light p-3"><ion-icon name="construct-outline" class="me-2 lead"></ion-icon>Examinadores</a>
-        <a href="{% url 'Ui4' %}" class="d-block text-light p-3"><ion-icon name="construct-outline" class="me-2 lead"></ion-icon>Reservados</a>
+        {% endif %}
+        
+        <a href="{% url 'Ui5' %}" class="d-block text-light p-3"><ion-icon name="construct-outline" class="me-2 lead"></ion-icon>Reservados</a>
       </div>
     </div>
     <!--barra de navegacion superior -->
@@ -38,7 +41,7 @@
           </button>
           <!--buscador-->
           <form class="d-flex position-relative d-inline-block" role="search">
-            <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+            <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search" name="buscar">
             <button class="btn btn-search position-absolute" type="submit"><ion-icon name="search-outline"></ion-icon></button>
           </form>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -46,7 +49,7 @@
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   <img class="img-fluid rounded-circle me-2  avatar" src="https://png.pngtree.com/png-vector/20210706/ourlarge/pngtree-blank-whatsapp-bussiness-man-photo-profile-png-image_3562846.jpg" alt="">
-                  Carlos Madariaga 
+                  {{user.username}}
                 </a>
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="#">perfil</a></li>

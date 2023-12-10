@@ -6,24 +6,28 @@
 {% bootstrap_javascript %}
 
 {% block content %}
-<div class="form-group">
-  <h1>Agregar Evaluaciones Disponible</h1>
-  
-  <div class="">
-    <form action="" method="POST" class="form-group">
-        
-
-
-            
-        {% csrf_token %}
-        {% bootstrap_form form field_cols='col-sm-6' %} 
-        <hr>  
-        <div class="d-grid gap-2 col-6 mx-auto ">    
-        <input  href="ui1.html"   type="submit" value="AGREGAR EXAMINADOR" class="m-4 btn btn-success btn ">
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header">
+            <h1 class="mb-0">Agregar Evaluaciones Disponibles</h1>
+          </div>
+          <div class="card-body">
+            <form action="" method="POST" class="form">
+              {% csrf_token %}
+              {% bootstrap_form form field_cols='col-sm-6' %}
+              <hr>
+              <div class="d-flex justify-content-between">
+                <button type="submit" class="m-4 btn btn-success btn">AGREGAR</button>
+                {% if request.user.is_staff or request.user.is_superuser %}
+                  <a href="{% url 'Examen_u' %}" class="m-4 btn btn-danger btn">VER TODAS LAS EVALUACIONES</a>
+                {% endif %}
+              </div>
+            </form>
+          </div>
         </div>
-        <!---{{form}}-->
-    </form>
-</div>
-
-
-{% endblock %} 
+      </div>
+    </div>
+  </div>
+{% endblock %}

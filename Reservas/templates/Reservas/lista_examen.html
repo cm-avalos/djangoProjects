@@ -1,0 +1,63 @@
+{% extends "Reservas/base.html" %}
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+
+
+
+
+{% block content %}
+
+
+<header style=" background-color: #333;
+color: #fff;
+text-align: center;
+padding: 1em 0;">
+    <h1 >examen </h1>
+</header>
+{% if examen %}
+
+<table class="table table-striped table-inverse table-responsive   ">
+    <thead class="thead-inverse">
+        <tr id="tablatitutlo">
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>  </th>
+            <th></th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        {% for x in examen %}
+        <tr>
+            
+            <td id="tablatitutlo">{{ x. }}</td>
+            <td id="tablatitutlo">{{ x. }}</td>
+         
+            
+            <!--actualizar eliminar-->
+            <td><a class="btn btn-success btn-sm" href="{% url 'ver_asociacion' reservado.id %}" >ver</a></td>
+            {% if request.user.is_staff or request.user.is_superuser %}
+            <td><a class="btn btn-warning btn-sm" href="{% url 'actualizar_asoc' reservado.id %}" >Actualizar</a></td>
+            <td><a class="btn btn-danger btn-sm" href="{% url 'eliminar_asoc' reservado.id %}">Eliminar</a></td>
+            {% endif %} 
+        </tr>
+        {% endfor %}
+        
+    </tbody>
+</table>
+{% else %}
+
+<div class="m-3 alert alert-primary" role="alert">
+    <strong>No se encuentran reservas  en el sistema</strong>
+</div>
+
+{% endif %}
+<a href="{% url 'Ui1' %}" class="btn btn-danger float-end botonAgregar">Agregar reserva</a>
+
+{% endblock %} 

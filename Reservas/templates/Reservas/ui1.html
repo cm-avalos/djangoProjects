@@ -19,9 +19,13 @@
         {% bootstrap_form form field_cols='col-sm-6' %} 
         <hr>  
         <div class="d-grid gap-2 col-6 mx-auto ">    
-        <input  href="ui1.html"   type="submit" value="AGREGAR EXAMINADOR" class="m-4 btn btn-success btn ">
+        <input  href="ui1.html"   type="submit" value="AGREGAR" class="m-4 btn btn-success btn ">
+        {% if request.user.is_staff or request.user.is_superuser %}        
+        <a  href="{% url 'Agenda_u' %}"   type="submit" value="" class="m-4 btn btn-danger btn " >VER TODAS LAS HORAS SOLICITADAS</a>
+        {% endif %}
         </div>
     </form>
+   
 </div>
         <!---
        {{form}}-->
